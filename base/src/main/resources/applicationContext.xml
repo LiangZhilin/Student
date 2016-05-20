@@ -40,7 +40,7 @@
 		</property>
 		<property name="mappingResources">
 			<list>
-				<value>com/blackbriar/model/Flower.hbm.xml</value>
+<!-- 				<value>com/blackbriar/model/Flower.hbm.xml</value> -->
 			</list>
 		</property>
 	</bean>

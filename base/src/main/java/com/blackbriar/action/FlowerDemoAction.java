@@ -6,7 +6,6 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.blackbriar.model.Flower;
 import com.blackbriar.service.FlowerDemoService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -26,11 +25,12 @@ public class FlowerDemoAction extends ActionSupport{
 			@Result(name="error",location="/error500.jsp")	
 	})
 	public String addDemo(){
-		System.out.println(flowerDemoService);
-		 Flower flower = new Flower();
-		 flower.setFlowername("测试花名");
-		 if(flowerDemoService.addFlower(flower))  return SUCCESS;
-		 else return ERROR;
+//		System.out.println(flowerDemoService);
+//		 Flower flower = new Flower();
+//		 flower.setFlowername("测试花名");
+//		 if(flowerDemoService.addFlower(flower))  return SUCCESS;
+//		 else 
+			 return ERROR;
 	}
 	
 	public String execute2(){

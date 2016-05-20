@@ -11,6 +11,7 @@
 	<head>
 		<base href="<%=basePath%>">
 		<title>登录</title>
+		<link href="css/display.css" rel=”stylesheet” type=”text/css” />
 		 <jsp:include page="/common/head.jsp"></jsp:include>
 		<script type="text/javascript">
 		//登录页面初始化
@@ -129,7 +130,7 @@
 	</head>
 
 	</style>
-	<body>
+	<body style="border:0px;background-image:url(image/a.jpg); background-repeat:repeat-y;background-size:100%;">
 	<nav class="navbar" >
   <div class="container-fluid" style="background-color:white;">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -140,37 +141,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    	<img src="image/zara-logo.jpg" />
+    	
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  style="border:0px;">
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="index.jsp">首页</a></li>
-        <li class="dropdown">
-          <a href="regiter.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">关于我们<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">店铺</a></li>
-            <li><a href="#">联系我们</a></li>
-            <li><a href="#">邮件订阅</a></li>
-            <li><a href="#">咨询</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
+   
   </div><!-- /.container-fluid -->
 </nav>
-		<div class="center">
-		
-	 
-			<!--隐藏字体start-->
-			<!--<div style="height: 30px; margin-right: 150px" align="center">
-				<label id="label" style="display: none; color: red;"></label>
-			</div>-->
-			<!-- 隐藏字体end -->
-			
-			
+		<div class="center">			
 			<!-- 账号start -->
 			<div style="height: 30px;">
 				<div class="perL">
