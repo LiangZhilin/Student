@@ -8,12 +8,12 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-	<head>
-		<base href="<%=basePath%>">
-		<title>登录</title>
-		<link href="css/display.css" rel=”stylesheet” type=”text/css” />
-		 <jsp:include page="/common/head.jsp"></jsp:include>
-		<script type="text/javascript">
+<head>
+<base href="<%=basePath%>">
+<title>登录</title>
+<link href="css/display.css" rel=”stylesheet” type=”text/css” />
+<jsp:include page="/common/head.jsp"></jsp:include>
+<script type="text/javascript">
 		//登录页面初始化
 		$(document).ready(function(){
 		doCenter("center");//初始化窗口登陆居中
@@ -36,45 +36,42 @@
 	function doLogin()
 	{
 		$.ajax({
-		url:"<%=path%>/SSHLogin/login!loginConfirm",
-		data: {"user.FUsername":$("#username").val(),"user.FPassword":$("#password").val()},
+		url:"<%=path%>/login.action",
+		data: {"user.username":$("#username").val(),"user.password":$("#password").val()},
 		success : function(data) {
 		if(data=="用户名为空"||data=="密码为空")
 		{
-		//alert(data);
 		layer.alert(data, {icon: 6});
 		}
 		var inputCode = document.getElementById("checkcode").value.toUpperCase(); //取得输入的验证码并转化为大写        
-	
 		if(data!="用户名为空"&&data!="密码为空")
 		{
 			if (inputCode.length <= 0) { //若输入的验证码长度为0  
-				//alert("请输入验证码！");  
 				layer.alert("请输入验证码！", {icon: 6});//则弹出请输入验证码 
 			} 
 			else if (inputCode != code) 
 			{ //若输入的验证码与产生的验证码不一致时  
 				//alert("验证码输入错误！@_@"); 
 				layer.alert("验证码输入错误！@_@", {icon: 6});//则弹出验证码输入错误  
-			createCode();//刷新验证码  
+			    createCode();//刷新验证码  
 				document.getElementById("checkcode").value = "";//清空文本框  
 			} 
-			else if(inputCode == code&&data=="用户名/密码不匹配") 
-			{
-			layer.alert("用户名/密码不匹配", {icon: 6});
-			}
 			else 
 			{ //输入正确时  
+			if(data=="success"){
 			layer.alert("输入正确", {icon: 6});
-			var url = "<%=path%>/SSHLogin/loginSuccess";
+			var url = "<%=path%>/loginsuccess.jsp";
 			window.location.href=url;
+			}else{
+			   layer.alert("用户名/密码输入错误", {icon: 6});
+			}
 			}
 		}
 		}
 			//跳转到登录成功的界面
 			//if(data=="success")
 			//{
-			//var url = "<%=path%>/SSHLogin/loginSuccess";
+			//var url = "<%=path%>/loginSuccess";
    			//window.location.href=url;
 			//}
 			//if(data="用户名/密码不匹配") {
@@ -127,75 +124,67 @@
 </script>
 
 
-	</head>
+</head>
 
-	</style>
-	<body style="border:0px;background-image:url(image/a.jpg); background-repeat:repeat-y;background-size:100%;">
-	<nav class="navbar" >
-  <div class="container-fluid" style="background-color:white;">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header" >
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    	
-    </div>
+</style>
+<body
+	style="border:0px;background-image:url(image/a.jpg); background-repeat:repeat-y;background-size:100%;">
+	<nav class="navbar">
+	<div class="container-fluid" style="background-color:white;">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-   
-  </div><!-- /.container-fluid -->
-</nav>
-		<div class="center">			
-			<!-- 账号start -->
-			<div style="height: 30px;">
-				<div class="perL">
-					<label>
-						账 号：
-					</label>
-				</div>
-				<div class="perR">
-					<input type="text" name="username" id="username">
-				</div>
-			</div>
-			<!-- 账号end -->
-			<!-- 密码start -->
-			<div style="height: 30px;">
-				<div class="perL">
-					<label>
-						密 码：
-					</label>
-				</div>
-				<div class="perR">
-					<input type="password" name="password" id="password">
-				</div>
-			</div>
-			<!-- 秘密end -->
-			<!-- 校验码start -->
-			<div style="height: 30px;">
-				<div class="perL">
-					<label>
-						校验码：
-					</label>
-				</div>
-				<div class="perR">
-				<input type = "text" id = "checkcode"/>  
-            <input type = "button" id="code" onclick="createCode()"/>  
-				</div>
-			</div>
-			<!-- 校验码end -->
-			<!-- 按钮start -->
-			<div align="center">
-				<button onclick="doLogin()">
-					登录
-				</button>
-				<button onclick="doRegister()">
-					注册
-				</button>
-			</div>
-			<!-- 按钮end -->
 		</div>
-	</body>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+
+	</div>
+	<!-- /.container-fluid --> </nav>
+	<div class="center">
+		<!-- 账号start -->
+		<div style="height: 30px;">
+			<div class="perL">
+				<label> 账 号： </label>
+			</div>
+			<div class="perR">
+				<input type="text" name="username" id="username">
+			</div>
+		</div>
+		<!-- 账号end -->
+		<!-- 密码start -->
+		<div style="height: 30px;">
+			<div class="perL">
+				<label> 密 码： </label>
+			</div>
+			<div class="perR">
+				<input type="password" name="password" id="password">
+			</div>
+		</div>
+		<!-- 秘密end -->
+		<!-- 校验码start -->
+		<div style="height: 30px;">
+			<div class="perL">
+				<label> 校验码： </label>
+			</div>
+			<div class="perR">
+				<input type="text" id="checkcode" /> <input type="button" id="code"
+					onclick="createCode()" />
+			</div>
+		</div>
+		<!-- 校验码end -->
+		<!-- 按钮start -->
+		<div align="center">
+			<button onclick="doLogin()">登录</button>
+			<button onclick="doRegister()">注册</button>
+		</div>
+		<!-- 按钮end -->
+	</div>
+</body>
 </html>

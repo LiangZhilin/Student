@@ -38,11 +38,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
-		<property name="mappingResources">
-			<list>
-<!-- 				<value>com/blackbriar/model/Flower.hbm.xml</value> -->
-			</list>
-		</property>
+		<property name="packagesToScan" value="com.blackbriar.model"/>
 	</bean>
 	<bean id="flowerDemoAction" class="com.blackbriar.action.FlowerDemoAction">
 	</bean>
